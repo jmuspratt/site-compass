@@ -102,9 +102,8 @@
 	}
 
 	@mixin animation ($name, $duration: 1s, $delay: 0, $iterations: 1, $direction: normal, $timing: ease, $fillmode: forwards) {
-		-webkit-animation: 	$name $duration $delay $iterations $direction $timing $fillmode;
-		-moz-animation: 		$name $duration $delay $iterations $direction $timing $fillmode;
-		-o-animation: 			$name $duration $delay $iterations $direction $timing $fillmode;
-		animation: 			$name $duration $delay $iterations $direction $timing $fillmode;
+	 -webkit-animation: 		$name $duration $delay $iterations $direction $timing $fillmode;
+	 -moz-animation: 			$name $duration $delay $iterations $direction $timing $fillmode;
+	 -o-animation: 			$name $duration $delay $iterations $direction $timing $fillmode;
+	 animation: 				$name $duration $delay $iterations $direction $timing $fillmode;
 	}
-
