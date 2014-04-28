@@ -1,7 +1,11 @@
+//	-------------------------------
+//	Doc Ready
+
 $(document).ready(function() {
 
 	//	-------------------------------
 	//	global: Get current breakpoints 
+		
 		getSize();
 		$(window).on('resize', function(){ getSize(); });
 
@@ -26,14 +30,10 @@ $(document).ready(function() {
 		$(".hide").hide(); 
 
 		$('a.trigger').click(function() {
-
 	   		var trigger = $(this);
 			var trigger_text = trigger.text();
-			// console.log(trigger_text);
-
 	   		var target_id = trigger.attr("href");
 			var target = $(target_id);
-
 			if ( target.hasClass("open") ) {
 	   		   			target.removeClass("open").slideToggle(200);
 	   		   			trigger.removeClass("active");
@@ -42,17 +42,8 @@ $(document).ready(function() {
 	   		   		target.addClass("open").slideToggle(200);
 	   		   		trigger.addClass("active");
 	   		   		}
-			if ( target.hasClass("videoplayer") ) {
-				trigger.hide();
-			}
-			if ( target.hasClass("videotrigger") ) {
-				trigger.closest(".videoplayer").hide();
-			}
-
 	   		return false;
 	   	});
-
-
 
 
 }); // end document.ready
@@ -63,6 +54,8 @@ $(document).ready(function() {
 //	-------------------------------
 //	Functions
 
+
+	// Based on http://adactio.com/journal/5429/
 	function getSize() {
 	    // for IE 8
 	    if (!window.getComputedStyle) {
