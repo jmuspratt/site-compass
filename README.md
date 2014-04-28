@@ -14,6 +14,6 @@ This is my starting-point for most sites. It's fairly minimal and assumes no par
 - [_breakpointflags.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_breakpointflags.scss) loops through the breakpoint variables and flags the body tag so that Javascript can detect the breakpoint. See [Jeremy Keith's article](http://adactio.com/journal/5429/) for the original idea.
 
 ## Javascript
-[jQuery](http://jquery.com) (still on 1.11.0 to support IE8), [Modernizr](http://modernizr.com), and [Respond.js](https://github.com/scottjehl/Respond) are standard. I also include [placeholders.js](http://jamesallardice.github.io/Placeholders.js/) to support the placeholder attribute in IE on inputs.
+[jQuery](http://jquery.com) (still on 1.11.0 to support IE8), [Modernizr](http://modernizr.com), and [Respond.js](https://github.com/scottjehl/Respond) are standard. I also include [placeholders.js](http://jamesallardice.github.io/Placeholders.js/) to support the placeholder attribute in IE.
 
-- [scripts.js](https://github.com/jmuspratt/site-template/blob/master/js/scripts.js) contains a few globally-useful interactions like animating scrolling, expanding/collapsing things, etc. 
+- [scripts.js](https://github.com/jmuspratt/site-template/blob/master/js/scripts.js) contains a few globally-useful interactions like animating scrolling, expanding/collapsing things, the above-mentioned breakpoint detection, etc. 
