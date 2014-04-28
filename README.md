@@ -1,10 +1,19 @@
-This is my starting-point for most sites.
+This is my starting-point for most sites. It's fairly minimal and assumes no particular CMS or CSS framework.
 
-While it doesn't don't assume any particular CMS or CSS framework, I do assume I'm going to use the following:
+## HTML
+- `index.php` contains a standard `<head>` with links to the CSS and JS below, plus basic containers or header, navigation and page contents.
 
-* [SASS](http://sass-lang.com) & [Compass](http://compass-style.org)
-* [Modernizr](http://modernizr.com)
-* [Respond.js](https://github.com/scottjehl/Respond)
-* [jQuery](http://jquery.com)
+## CSS
 
-The most important stuff is in the [utilities](https://github.com/jmuspratt/site-template/blob/master/sass/_utilities.scss) partial, which contains all SASS my mixins.
+[SASS](http://sass-lang.com) and [Compass](http://compass-style.org) are used to generate CSS.
+
+- [screen.scss](https://github.com/jmuspratt/site-template/blob/master/sass/screen.scss) brings in some resets, all partials, and then the bulk of the layout SASS.
+- [_vars](https://github.com/jmuspratt/site-template/blob/master/sass/_utilities.scss) contains global color, font, and breakpoint variables. 
+- [_customresets.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_customresets.scss) 
+- [_utilities.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_utilities.scss) contains all my SASS mixins and specialty classes.
+- [_breakpointflags.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_breakpointflags.scss) loops through the breakpoint variables and flags the body tag so that Javascript can detect the breakpoint. See [Jeremy Keith's article](http://adactio.com/journal/5429/) for the original idea.
+
+## Javascript
+[jQuery](http://jquery.com) (still on 1.11.0 to support IE8), [Modernizr](http://modernizr.com), and [Respond.js](https://github.com/scottjehl/Respond) are standard. I also include [placeholders.js](http://jamesallardice.github.io/Placeholders.js/) to support the placeholder attribute in IE on inputs.
+
+- [scripts.js](https://github.com/jmuspratt/site-template/blob/master/js/scripts.js) contains a few globally-useful interactions like animating scrolling, expanding/collapsing things, etc. 
