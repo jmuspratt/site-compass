@@ -8,7 +8,7 @@ This is my starting-point for most sites. It's fairly minimal and assumes no par
 [SASS](http://sass-lang.com) and [Compass](http://compass-style.org) are used to generate CSS.
 
 - [screen.scss](https://github.com/jmuspratt/site-template/blob/master/sass/screen.scss) brings in some resets, all partials, and then the bulk of the layout SASS.
-- [_vars](https://github.com/jmuspratt/site-template/blob/master/sass/_utilities.scss) contains global color, font, and breakpoint variables. 
+- [_vars.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_utilities.scss) contains global color, font, and breakpoint variables. 
 - [_utilities.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_utilities.scss) contains all my SASS mixins and specialty classes.
 - [_customresets.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_customresets.scss) attempts to force uniform styling on some more elements, mostly in forms.
 - [_breakpointflags.scss](https://github.com/jmuspratt/site-template/blob/master/sass/_breakpointflags.scss) loops through the breakpoint variables and flags the body tag so that Javascript can detect the breakpoint. See [Jeremy Keith's article](http://adactio.com/journal/5429/) for the original idea.
