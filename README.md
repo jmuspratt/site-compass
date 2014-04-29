@@ -1,4 +1,4 @@
-This is my starting-point for most sites. It's fairly minimal and assumes no particular CMS or CSS framework.
+This is my starting-point for most sites. It's minimal and assumes no particular CMS or CSS framework.
 
 #### HTML
 - [index.php](https://github.com/jmuspratt/site-template/blob/master/index.php) contains a standard `<head>` with links to the CSS and JS below, plus basic containers for header, navigation and page contents.
