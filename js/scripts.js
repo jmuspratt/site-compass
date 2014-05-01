@@ -12,16 +12,20 @@ $(document).ready(function() {
 
 	//	-------------------------------
 	//	global: animate scroll
-
-   	 $("a.animate").click(function(event){
- 	 		event.preventDefault();
- 	 		var full_url = this.href;
- 	 		var parts = full_url.split("#");
- 	 		var trgt = parts[1];
- 	 		var target_offset = $("#"+trgt).offset();
- 	 		var target_top = target_offset.top - 56;
- 	 		$("html, body").animate({scrollTop:target_top}, "slow");
- 	 	});
+	    $(function() {
+	        $('a.animate').click(function() {
+	            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	                var target = $(this.hash);
+	                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	                if (target.length) {
+	                    $('html,body').animate({
+	                        scrollTop: target.offset().top
+	                    }, 1000);
+	                    return false;
+	                }
+	            }
+	        });
+	    });
 		
 
 	//	-------------------------------
