@@ -22,12 +22,14 @@
 	.clear 		{clear:both;}
 	.cf:after	{content: ""; zoom: 1; font-size:0; display: block; height: 0; clear: both; visibility: hidden;}
 	
-	@mixin m($val) {margin-top:$val; margin-bottom:$val;}		// 'margin'
-	@mixin p($val) {padding-top:$val;padding-bottom:$val;}		// 'margin sides'
-	@mixin ms($val) {margin-left:$val; margin-right:$val;}		// 'padding'
-	@mixin ps($val) {padding-left:$val;padding-right:$val;}		// 'padding sides'
-
-
+//	Simple shorthands for margins, padding, and width/height properties
+	@mixin m($val) 				{margin-top:$val; margin-bottom:$val;}		// 'margin'
+	@mixin p($val) 				{padding-top:$val;padding-bottom:$val;}		// 'margin sides'
+	@mixin ms($val) 			{margin-left:$val; margin-right:$val;}		// 'padding'
+	@mixin ps($val) 			{padding-left:$val;padding-right:$val;}		// 'padding sides'
+	@mixin dim($width, $height) {width:$width; height:$height;}				// 'dimensions'
+	
+	// Container for element will have to be set to position:relative;
 	@mixin center($width, $height) {
 		position:absolute;
 		left:50%;
