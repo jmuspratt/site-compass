@@ -58,7 +58,7 @@
 //	http://opticalcortex.com/the-end-of-sprites-the-rise-of-svg/
 	@mixin bg_image($filename, $type:svg) {
 		@if $type == 'svg' {
-			background-image: inline-image('#{$filename}.svg', image/svg\+xml);
+			background-image: inline-image('#{$img_path}#{$filename}.svg', image/svg\+xml);
 			html.no-svg & {background-image: url('#{$img_path}#{$filename}.png');}	
 		}
 		@else {
