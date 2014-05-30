@@ -1,79 +1,135 @@
-//	-------------------------------
-//	Doc Ready
-
 $(document).ready(function() {
 
-	//	-------------------------------
-	//	global: Get current breakpoints 
-		
-		getSize();
-		$(window).on('resize', function(){ getSize(); });
-
+	// Store features as object literals
+	// Based on http://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
 
 	//	-------------------------------
-	//	global: animate scroll
-	    $(function() {
-	        $('a.animate').click(function() {
-	            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-	                var target = $(this.hash);
-	                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-	                if (target.length) {
-	                    $('html,body').animate({
-	                        scrollTop: target.offset().top
-	                    }, 1000);
-	                    return false;
-	                }
-	            }
-	        });
-	    });
-		
-
-	//	-------------------------------
-	//	global: open/close	
-
-		$(".hide").hide(); 
-
-		$('a.trigger').click(function() {
-	   		var trigger = $(this);
-			var trigger_text = trigger.text();
-	   		var target_id = trigger.attr("href");
-			var target = $(target_id);
-			if ( target.hasClass("open") ) {
-	   		   			target.removeClass("open").slideToggle(200);
-	   		   			trigger.removeClass("active");
-	   		   		}
-	   		else {
-	   		   		target.addClass("open").slideToggle(200);
-	   		   		trigger.addClass("active");
-	   		   		}
-	   		return false;
-	   	});
-
-
-}); // end document.ready
-
-
-
-
-//	-------------------------------
-//	Functions
-
-
-	// Based on http://adactio.com/journal/5429/
-	function getSize() {
-	    // for IE 8
-	    if (!window.getComputedStyle) {
-	        size = 4;
-	    }
-		    else {
-			var size_string = window.getComputedStyle(document.body,':after').getPropertyValue('content');
-			// strip quotes for firefox
-			size_string = size_string.replace(/["']/g, "");
-			// remove the word "size" (leaving just a number like 3)
-			size_string = size_string.replace("size", "");
-			// parse the number as a number
-			var	size = parseInt(size_string);
-			// console.log ("the size is " + size_string);
-			return size;
+	//	Utilities
+	var Utilities = {
+		getSize: function() {
+			var size_string = window.getComputedStyle(document.body,':after').getPropertyValue('content')
+			size_string = size_string.replace(/["']/g, "")
+			size_string = size_string.replace("size", "")
+			var	size = parseInt(size_string)
+			return size
 		}
-	}
+		
+	} // Utilities
+	
+	
+	
+	
+
+	//	-------------------------------
+	// OpenClose
+	
+	var OpenClose = {
+		// Settings
+		settings: {
+			$triggers: $('a.trigger'),
+			$to_hide: $('.hide')
+		},
+		// Init
+		init: function() {
+			s = this.settings
+			OpenClose.bind()
+		},
+		// Bind
+		bind: function() {
+			OpenClose.hideThings()
+			s.$triggers.click( function() {
+				var $clicked_trigger = $(this)
+				OpenClose.doStuff($clicked_trigger)
+				return false
+			} )
+		},
+		// Functions
+		doStuff: function($clicked_trigger) {
+			OpenClose.displayToggle($clicked_trigger)
+			OpenClose.textToggle($clicked_trigger)
+		},
+		hideThings: function()	{
+			s.$to_hide.hide()
+		},
+		displayToggle: function($clicked_trigger) {
+			var target_id = $clicked_trigger.attr("href")
+			var $target = $(target_id)
+			if ( $target.hasClass("open") ) {
+				$target.removeClass("open").slideToggle(300)
+				$clicked_trigger.removeClass("active")
+			}
+			else {
+				$target.addClass("open").slideToggle(300)
+				$clicked_trigger.addClass("active")
+			}
+		},
+		textToggle: function($clicked_trigger) {
+			if ( $clicked_trigger.data('default-text') ) {
+				var default_text = $clicked_trigger.data('default-text')
+			}
+			if ($clicked_trigger.data("alt-text") ) {
+				var alt_text 	 = $clicked_trigger.data("alt-text")
+			}
+			var current_text = $clicked_trigger.text()
+			if (alt_text && default_text) {
+				if ( default_text == current_text ) {
+					$clicked_trigger.text(alt_text)
+				}
+				else {
+					$clicked_trigger.text(default_text)
+				}
+			}
+		},
+	} // OpenClose
+	
+
+	//	-------------------------------
+	//	Global: Animate Scrolling
+
+	var AnimatedScrolling = {
+		settings: {
+			$animatables: $('.animate'),
+			speed: 1200
+		},
+		init: function() {
+			s = this.settings
+			this.bind()
+		},
+		bind: function() {
+			AnimatedScrolling.settings.$animatables.click( function() {
+				// $('.animate').click( function() {
+					var clicked_link = this
+					if ( AnimatedScrolling.checkSamePage(clicked_link) ) {
+						AnimatedScrolling.doScroll(clicked_link) 
+						return false // don't jump to hash
+					}
+				})
+			},
+			checkSamePage: function(clicked_link) {
+				if (location.pathname.replace(/^\//,'') == clicked_link.pathname.replace(/^\//,'') && location.hostname == clicked_link.hostname) {
+					return true
+				}
+				else {return false}
+			},
+			doScroll: function(clicked_link) {
+				var $target = $(clicked_link.hash)
+				$target = $target.length ? $target : $('[name=' + clicked_link.hash.slice(1) +']')
+				if ($target.length) {
+					$('html,body').animate({
+						scrollTop: $target.offset().top
+					}, AnimatedScrolling.settings.speed)
+				}
+			}
+		} // AnimatedScrolling
+	
+	
+	
+
+		// -----------------------------------------
+		// Run initializing functions when document is ready
+
+		AnimatedScrolling.init()
+		OpenClose.init()
+
+	}); // end document.ready
+
