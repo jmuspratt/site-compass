@@ -150,7 +150,8 @@ $(document).ready(function() {
 					featuresArray = features.split(' ')
 					for(var x = 0, length = featuresArray.length; x < length; x++) {
 						var func = featuresArray[x]
-						func.init()
+						// http://stackoverflow.com/questions/359788/how-to-execute-a-javascript-function-when-i-have-its-name-as-a-string
+						window["MyFeature"]["init"]()
 						// if(this[func] && typeof this[func].init === 'function') {
 						// 	this[func].init()
 						// }
