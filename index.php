@@ -38,7 +38,7 @@
 	</head>
 
 
-	<body>
+	<body data-features="MyFeature">
 
 			<header class="main-header">
 				<nav>

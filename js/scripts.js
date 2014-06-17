@@ -123,13 +123,45 @@ $(document).ready(function() {
 		} // AnimatedScrolling
 	
 	
+		var MyFeature = {
+			init: function() {
+				console.log('fired!')
+			}
+		}
 	
 
 		// -----------------------------------------
-		// Run initializing functions when document is ready
-
+		// Run initializing functions when document is ready,
+		
+		// Global
 		AnimatedScrolling.init()
 		OpenClose.init()
+		
+		// Page-specific
+		// Get features based on <body> tag's data-features attribute
+		// based on http://viget.com/extend/javascript-execution-patterns-for-non-web-apps
+
+		var SiteFeatures = {
+			init: function() {
+				var features = $('body').data('features')
+				var featuresArray = []
+ 
+				if(features) {
+					featuresArray = features.split(' ')
+					for(var x = 0, length = featuresArray.length; x < length; x++) {
+						var func = featuresArray[x]
+						func.init()
+						// if(this[func] && typeof this[func].init === 'function') {
+						// 	this[func].init()
+						// }
+					}
+				}
+			}
+		} // Site.features
+		
+		//Page specific
+		SiteFeatures.init()
+
 
 	}); // end document.ready
 
