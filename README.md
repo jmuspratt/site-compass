@@ -1,3 +1,5 @@
+# site-compass
+
 This is my starting-point for most sites. It's minimal and assumes no particular CMS or CSS framework.
 
 #### HTML
